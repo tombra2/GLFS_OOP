@@ -7,7 +7,6 @@ public class Railway {
         System.out.println("Der Zug der Zug hat keine Bremsen");
         Waggon w123 = new Waggon("w123",20000, LocalDate.of(2000,2,2));
         Waggon w124 = new Waggon("w124", 21100,LocalDate.of(2025,2,1));
-
         Train ice = new Train("ice");
 
         w123.enter(3);
