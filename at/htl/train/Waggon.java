@@ -1,15 +1,15 @@
-package Train;
+package at.htl.train;
 
 import java.time.LocalDate;
 import java.util.Random;
 
 public class Waggon {
     private String name;
-    private double weight;
+    private int weight;
     private LocalDate yearOfConstruction;
     private int passengers;
 
-    public Waggon(String name, double weight, LocalDate yearOfConstruction) {
+    public Waggon(String name, int weight, LocalDate yearOfConstruction) {
         this.name = name;
         this.weight = weight;
         this.yearOfConstruction = yearOfConstruction;
@@ -29,14 +29,13 @@ public class Waggon {
         this.name = name;
     }
 
-    public double getWeight() {
+    public int getWeight() {
         return weight;
     }
 
-    public void setWeight(double weight) {
+    public void setWeight(int weight) {
         if (weight < 0) {
             this.weight = weight * -1;
-
         } else {
             this.weight = weight;
         }
@@ -56,36 +55,31 @@ public class Waggon {
 
     public void setPassengers(int passengers) {
         if (passengers < 0) {
-
             this.passengers = passengers * -1;
         } else {
             this.passengers = passengers;
         }
+
     }
 
     public void enter() {
-        Random rnd = new Random();
-        this.weight = this.weight + rnd.nextInt(30, 130);
         this.passengers++;
-
+        Random rnd = new Random();
+        this.weight += rnd.nextInt(30, 131);
     }
 
     public void enter(int passengers) {
-
         Random rnd = new Random();
+        this.passengers += passengers;
         for (int i = 0; i < passengers; i++) {
-            this.weight = this.weight + rnd.nextInt(30, 130);
-            this.passengers++;
+            this.weight += rnd.nextInt(30, 130);
         }
-
 
     }
 
-public static Waggon addWaggon(String name){
-        return new Waggon(name);
-}
     @Override
     public String toString() {
-        return String.format("| %s | %.2f | %s | %d Reisende |", name, weight, yearOfConstruction, passengers);
+        return String.format("|%s|%d|%s|%d Reisende|", this.name, this.weight, this.yearOfConstruction,
+                this.passengers);
     }
 }
